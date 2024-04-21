@@ -4,7 +4,7 @@
     align-items: center;
     border: none;
     border-radius: 10px;
-    background-color: #6f1a5a;
+    background-color: rgb(80, 224, 77);
     color: #ffffff;
     font-size: 14px;
     text-transform: uppercase;
@@ -14,7 +14,7 @@
   
   .contactBtn:hover,
   .contactBtn:focus {
-    background-color: #541344;
+    background-color: rgb(42, 114, 41);
   }
   
   .contactName {

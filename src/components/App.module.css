@@ -1,8 +1,15 @@
 .phonebookContainer {
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  border: 2px solid #ccc;
   padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
 .phonebookTitle {
   font-size: 26px;
   margin-bottom: 20px;
+  color: rgb(80, 224, 77);
 }
