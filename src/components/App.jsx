@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import css from "./App.module.css";
+import ContactForm from "./ContactForm/ContactForm";
+import SearchBox from "./SearchBox/SearchBox";
+import ContactList from "./ContactList/ContactList";
+import { fetchContacts } from "../redux/contactsOps";
+import { useDispatch, useSelector } from "react-redux";
+import { selectError, selectLoading } from "../redux/contactsSlice";
+import { useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+   const dispatch = useDispatch();
+   const isLoading = useSelector(selectLoading);
+   const error = useSelector(selectError);
 
+   useEffect(() => {
+     dispatch(fetchContacts());
+   }, [dispatch]);
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className={css.phonebookContainer}>
+        <h1 className={css.phonebookTitle}>Phonebook</h1>
+        <ContactForm />
+        <SearchBox />
+        {isLoading && !error && <b>Request in progress...</b>}
+        <ContactList />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
